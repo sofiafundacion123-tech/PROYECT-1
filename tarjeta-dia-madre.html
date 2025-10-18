@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Día de la Madre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .card {
+            width: 420px;
+            height: 580px;
+            background: linear-gradient(145deg, #fff 0%, #f8f4ff 100%);
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: cardEntry 1s ease-out;
+        }
+
+        @keyframes cardEntry {
+            from {
+                transform: scale(0.5) rotateY(180deg);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+            }
+        }
+
+        .flowers {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .flower:nth-child(1) {
+            top: 20px;
+            left: 30px;
+            animation-delay: 0s;
+        }
+
+        .flower:nth-child(2) {
+            top: 60px;
+            right: 40px;
+            animation-delay: 0.5s;
+        }
+
+        .flower:nth-child(3) {
+            bottom: 80px;
+            left: 20px;
+            animation-delay: 1s;
+        }
+
+        .flower:nth-child(4) {
+            bottom: 40px;
+            right: 30px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-15px) rotate(5deg);
+            }
+        }
+
+        .petal {
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle at 30% 30%, #ff6b9d, #c44569);
+            border-radius: 50% 50% 0 50%;
+            position: absolute;
+            transform-origin: bottom right;
+            animation: petalPulse 2s ease-in-out infinite;
+        }
+
+        @keyframes petalPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .petal:nth-child(1) { transform: rotate(0deg); }
+        .petal:nth-child(2) { transform: rotate(72deg); }
+        .petal:nth-child(3) { transform: rotate(144deg); }
+        .petal:nth-child(4) { transform: rotate(216deg); }
+        .petal:nth-child(5) { transform: rotate(288deg); }
+
+        .flower-center {
+            width: 15px;
+            height: 15px;
+            background: radial-gradient(circle, #ffd93d, #f9a826);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 60px 40px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .heart-container {
+            margin-bottom: 30px;
+            animation: heartBeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20%, 40% { transform: scale(1); }
+        }
+
+        .heart {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff4757 100%);
+            margin: 0 auto;
+            position: relative;
+            transform: rotate(-45deg);
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .heart:before,
+        .heart:after {
+            content: "";
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ff4757 100%);
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .heart:before {
+            top: -50px;
+            left: 0;
+        }
+
+        .heart:after {
+            left: 50px;
+            top: 0;
+        }
+
+        .sparkles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: #ffd93d;
+            border-radius: 50%;
+            animation: sparkleAnim 2s ease-in-out infinite;
+            box-shadow: 0 0 10px #ffd93d;
+        }
+
+        .sparkle:nth-child(1) { top: 20%; left: 20%; animation-delay: 0s; }
+        .sparkle:nth-child(2) { top: 40%; right: 25%; animation-delay: 0.3s; }
+        .sparkle:nth-child(3) { bottom: 30%; left: 30%; animation-delay: 0.6s; }
+        .sparkle:nth-child(4) { top: 60%; right: 20%; animation-delay: 0.9s; }
+        .sparkle:nth-child(5) { top: 30%; left: 50%; animation-delay: 1.2s; }
+
+        @keyframes sparkleAnim {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: titleGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); }
+            50% { text-shadow: 2px 2px 20px rgba(118, 75, 162, 0.4); }
+        }
+
+        .message {
+            font-size: 1.2em;
+            color: #555;
+            line-height: 1.6;
+            font-style: italic;
+            margin-top: 20px;
+            animation: fadeInUp 1.5s ease-out 0.5s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .signature {
+            margin-top: 30px;
+            font-size: 1em;
+            color: #764ba2;
+            font-weight: bold;
+            animation: fadeInUp 1.5s ease-out 1s both;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="flowers">
+            <div class="flower">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+            <div class="flower">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="flower-center"></div>
+            </div>
+        </div>
+
+        <div class="sparkles">
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+            <div class="sparkle"></div>
+        </div>
+
+        <div class="content">
+            <div class="heart-container">
+                <div class="heart"></div>
+            </div>
+            
+            <h1>Feliz Día Mamá</h1>
+            
+            <p class="message">
+                "Tu amor es el refugio donde mi alma encuentra paz, 
+                la luz que ilumina cada uno de mis pasos, 
+                y el abrazo eterno que guardo en mi corazón."
+            </p>
+            
+            <p class="signature">Con todo mi amor ❤️</p>
+        </div>
+    </div>
+</body>
+</html>
